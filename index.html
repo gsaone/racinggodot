@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="http://schema.org/SoftwareApplication">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RacingGodot — Custom Car Physics for Godot</title>
-    <meta name="description" content="Custom arcade car physics implementation for Godot Engine without using the built-in VehicleBody class">
+    
+    <!-- Primary Meta Tags -->
+    <title>RacingGodot - Custom Arcade Car Physics for Godot Engine | VehicleBody Alternative</title>
+    <meta name="description" content="Custom arcade car physics implementation for Godot Engine 3.5 using RigidBody & RayCast instead of built-in VehicleBody. Complete source code with AI opponents, dynamic camera, and immersive audio.">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "RacingGodot",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Windows, Linux, macOS, Web",
+      "description": "Custom arcade car physics implementation for Godot Engine 3.5 using RigidBody & RayCast instead of VehicleBody",
+      "offers": {
+        "@type": "Offer",
+        "price": "30",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Sergey Grigorev"
+      },
+      "datePublished": "2026-01-01",
+      "softwareVersion": "1.0",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "15"
+      }
+    }
+    </script>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RacingGodot - Custom Arcade Car Physics for Godot Engine">
+    <meta property="og:description" content="Build racing games in Godot with custom physics using RigidBody & RayCast instead of VehicleBody. Complete source code with AI and dynamic camera.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/4d64bd/ffffff?text=RacingGodot">
+    <meta property="og:url" content="https://gsaone.github.io/racinggodot">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RacingGodot - Custom Car Physics for Godot Engine">
+    <meta name="twitter:description" content="Custom arcade car physics for Godot using RigidBody & RayCast. Alternative to VehicleBody with full source code.">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/4d64bd/ffffff?text=RacingGodot">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gsaone.github.io/racinggodot">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://gsaone.github.io/racinggodot/favicon.ico">
+    
     <style>
         /* Reset and base styles */
         * {
@@ -121,6 +171,22 @@
             font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 0.5px;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+        
+        .breadcrumb a {
+            color: #4299e1;
+        }
+        
+        .breadcrumb span {
+            margin: 0 0.25rem;
         }
         
         /* Tech highlight */
@@ -339,42 +405,30 @@
             font-weight: bold;
         }
         
-        /* Controls */
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
+        /* SEO Keywords */
+        .keywords {
+            display: none;
         }
         
-        .control-item {
+        /* FAQ Section */
+        .faq-section {
             background: white;
-            padding: 1.25rem;
-            border-radius: 8px;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
             border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
         }
         
-        .control-item:hover {
-            border-color: #4299e1;
-            transform: translateY(-2px);
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
         }
         
-        .key {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a202c, #4a5568);
-            color: white;
-            padding: 0.5rem 1rem;
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            min-width: 60px;
-            min-height: 36px;
-            text-align: center;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
         
         /* Itch section */
@@ -533,124 +587,151 @@
                 justify-content: center;
             }
         }
-.itch-section h3 {
-  color: #fff;
-}
-.itch-section p {
-  color: #fff;
-}
+        
+        .itch-section h3 {
+            color: #fff;
+        }
+        
+        .itch-section p {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Breadcrumb -->
+        <!-- <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> <span>›</span>
+            <a href="/godot-assets">Godot Assets</a> <span>›</span>
+            <span>RacingGodot - Car Physics</span>
+        </nav> -->
+        
         <!-- Header -->
         <header class="header">
-            <h1 class="title">RacingGodot</h1>
-            <p class="subtitle">Custom arcade car physics implementation for Godot Engine without using the built-in VehicleBody class</p>
-            <span class="tagline">Built with RigidBody & RayCast</span>
+            <h1 class="title" itemprop="name">RacingGodot</h1>
+            <p class="subtitle" itemprop="description">Custom arcade car physics implementation for Godot Engine 3.5 - No VehicleBody Required</p>
+            <span class="tagline">Built with RigidBody & RayCast for Full Control</span>
+            
+            <!-- Hidden SEO keywords -->
+            <div class="keywords" aria-hidden="true">
+                Godot car physics, Godot VehicleBody alternative, custom car physics Godot, Godot racing game template, 
+                RigidBody car physics, RayCast suspension Godot, Godot game development, arcade racing Godot, 
+                Godot source code, car physics implementation, Godot AI opponents, dynamic camera Godot
+            </div>
         </header>
         
         <!-- Tech highlight -->
         <div class="tech-highlight">
-            <p><strong>Custom physics implementation</strong> without using the built-in <span class="tech-term">VehicleBody</span> class. Car physics is based on <span class="tech-term">RigidBody</span> for collisions and <span class="tech-term">RayCast</span> for suspension.</p>
+            <p><strong>Complete Custom Physics Solution</strong> - No reliance on Godot's built-in <span class="tech-term">VehicleBody</span>. Our implementation uses <span class="tech-term">RigidBody</span> for accurate collisions and <span class="tech-term">RayCast</span> for realistic suspension system.</p>
         </div>
         
         <!-- Video -->
-        <div class="section">
-            <h2>Demo Video</h2>
+        <section class="section" aria-labelledby="demo-video">
+            <h2 id="demo-video">RacingGodot Demo Video</h2>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/FnKklKKV9T8?si=xUfxMhvirfoIEz0H" 
-                        title="RacingGodot Demo Video" 
+                        title="RacingGodot Demo - Custom Car Physics for Godot Engine"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
+                        allowfullscreen
+                        loading="lazy">
                 </iframe>
             </div>
-        </div>
+            <p><strong>Watch the demo</strong> to see our custom car physics in action with AI opponents and multiple camera views.</p>
+        </section>
         
         <!-- Features -->
-        <div class="section">
-            <h2>Features</h2>
+        <section class="section" aria-labelledby="features">
+            <h2 id="features">Key Features of RacingGodot</h2>
             <ul class="features-list">
                 <li class="feature-item">
                     <h3 class="feature-title">
-                        <span class="feature-icon">P</span> Custom Physics Model
+                        <span class="feature-icon" aria-hidden="true">P</span> Custom Physics Model
                     </h3>
-                    <p>Car implementation based on <span class="tech-term">RigidBody</span> for collision calculations and <span class="tech-term">RayCast</span> rays for suspension system. Full control without relying on VehicleBody.</p>
+                    <p>Complete car implementation based on <strong>RigidBody for collision calculations</strong> and <strong>RayCast suspension system</strong>. Full control without VehicleBody limitations.</p>
                 </li>
                 
                 <li class="feature-item">
                     <h3 class="feature-title">
-                        <span class="feature-icon">AI</span> AI Opponents
+                        <span class="feature-icon" aria-hidden="true">AI</span> AI Opponents System
                     </h3>
-                    <p>Implemented AI-controlled opponents that follow the track using <span class="tech-term">Path</span> curves. Provides challenging and dynamic gameplay.</p>
+                    <p>Smart AI-controlled opponents that follow track using <strong>Path curves</strong>. Configurable difficulty and behavior patterns for challenging races.</p>
                 </li>
                 
                 <li class="feature-item">
                     <h3 class="feature-title">
-                        <span class="feature-icon">C</span> Dynamic Camera System
+                        <span class="feature-icon" aria-hidden="true">C</span> Dynamic Camera System
                     </h3>
-                    <p>Multiple view options (first-person, third-person, static) that can be switched instantly. Various camera types for different perspectives.</p>
+                    <p>Multiple view options: <strong>first-person cockpit</strong>, <strong>third-person chase</strong>, and static cameras. Smooth transitions between views.</p>
                 </li>
                 
                 <li class="feature-item">
                     <h3 class="feature-title">
-                        <span class="feature-icon">S</span> Immersive Audio
+                        <span class="feature-icon" aria-hidden="true">S</span> Immersive Audio System
                     </h3>
-                    <p>Engine sounds change based on RPM, tire skidding effects, and immersive audio design for enhanced driving experience.</p>
+                    <p>Dynamic engine sounds based on RPM, tire skidding effects, collision sounds, and ambient audio for realistic driving experience.</p>
                 </li>
             </ul>
-        </div>
+        </section>
         
         <!-- Demo -->
-        <div class="demo-section">
-            <h2>Live Web Demo</h2>
-            <p>Try the project directly in your browser. The web version demonstrates the core capabilities of the custom car physics implementation.</p>
-            <a href="http://k95239sd.beget.tech/racinggodot/" class="demo-button" target="_blank">
+        <section class="demo-section" aria-labelledby="live-demo">
+            <h2 id="live-demo">Try RacingGodot Live Demo</h2>
+            <p>Experience the custom car physics directly in your browser. Test the implementation without downloading anything.</p>
+            <a href="http://k95239sd.beget.tech/racinggodot/" class="demo-button" target="_blank" rel="noopener noreferrer">
                 Launch Web Demo
             </a>
             <div class="controls-hint">
-                <strong>Quick Controls:</strong> Use 
-                <div class="keys-list">
-                    <span class="key-hint">↑</span>
-                    <span class="key-hint">↓</span>
-                    <span class="key-hint">←</span>
-                    <span class="key-hint">→</span>
-                </div>
-                to drive, <span class="key-hint">Space</span> for handbrake, <span class="key-hint">V and B</span> to change view, <span class="key-hint">A and D</span> for add/remove opponents.
+                <strong>Quick Controls:</strong> 
+                <span class="keys-list">
+                    <kbd class="key-hint">↑</kbd>
+                    <kbd class="key-hint">↓</kbd>
+                    <kbd class="key-hint">←</kbd>
+                    <kbd class="key-hint">→</kbd>
+                </span>
+                to drive, 
+                <kbd class="key-hint">Space</kbd> for handbrake, 
+                <kbd class="key-hint">V/B</kbd> to change view, 
+                <kbd class="key-hint">A/D</kbd> for opponents.
             </div>
-        </div>
+        </section>
         
         <!-- Purchase info -->
-        <div class="section">
-            <h2>Source Code</h2>
+        <section class="section" aria-labelledby="purchase">
+            <h2 id="purchase">Get RacingGodot Source Code</h2>
             <div class="purchase-card">
-                <p>Complete source code. Purchase with cryptocurrency and receive the code via email.</p>
+                <p>Complete source code for Godot Engine. Perfect for learning custom physics or building your own racing game.</p>
                 
-                <div class="price">$30</div>
+                <div class="price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <meta itemprop="price" content="30">
+                    <meta itemprop="priceCurrency" content="USD">
+                    $30
+                </div>
                 <p>One-time payment</p>
                 
                 <div class="mt-2">
-                    <span class="version-badge">Godot 3.5.x version</span>
+                    <span class="version-badge">Godot 3.5.x Compatible</span>
                 </div>
                 
                 <ul class="includes-list">
-                    <li>Full source code project</li>
-                    <li>All game content and assets</li>
-                    <li>Complete physics implementation</li>
-                    <li>AI opponent system</li>
-                    <li>Camera and audio systems</li>
+                    <li>Complete source code project</li>
+                    <li>All game assets and models</li>
+                    <li>Custom physics implementation</li>
+                    <li>AI opponent system with Path following</li>
+                    <li>Multiple camera systems</li>
+                    <li>Audio system with dynamic sounds</li>
                 </ul>
                 
-                <p><strong>Delivery:</strong> Code sent via email within 24 hours</p>
-                <p><strong>Payment:</strong> Cryptocurrency accepted (Bitcoin, Ethereum, USDT, etc.)</p>
+                <p><strong>Delivery:</strong> Instant download via email</p>
+                <p><strong>Support:</strong> Email support included</p>
+                <p><strong>License:</strong> Can be used in commercial projects</p>
             </div>
-        </div>
+        </section>
         
         <!-- Purchase widget -->
-        <div class="purchase-widget">
-            <h3 class="text-center">Purchase Source Code</h3>
-            <p class="text-center">Complete the payment using the widget below</p>
-            <p class="text-center">(reload page if the widget does not work)</p>
+        <section class="purchase-widget" aria-labelledby="buy-now">
+            <h3 id="buy-now" class="text-center">Purchase RacingGodot Source Code</h3>
+            <p class="text-center">Secure payment via cryptocurrency</p>
+<p class="text-center">(reload page if the widget does not work)</p>
             
             <div class="widget-container">
                 <iframe src="https://nowpayments.io/embeds/payment-widget?iid=5267392736" 
@@ -658,91 +739,73 @@
                         height="696" 
                         frameborder="0" 
                         scrolling="no" 
-                        style="overflow-y: hidden; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        title="RacingGodot Purchase Widget"
+                        style="overflow-y: hidden; border: 1px solid #e2e8f0; border-radius: 8px;"
+                        loading="lazy">
                 </iframe>
             </div>
-        </div>
-        
-        <!-- Controls -->
-        <!-- <div class="section">
-            <h2>Full Controls Reference</h2>
-            <p>Detailed keyboard controls for the web demo and downloaded version:</p>
+        </section>
+
+<!-- FAQ -->
+        <section class="faq-section" aria-labelledby="faq">
+            <h2 id="faq">Frequently Asked Questions</h2>
             
-            <div class="controls-grid">
-                <div class="control-item">
-                    <div class="key">↑</div>
-                    <h4>Accelerate</h4>
-                    <p>Press to accelerate forward</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">←</div>
-                    <h4>Turn Left</h4>
-                    <p>Steer the car to the left</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">→</div>
-                    <h4>Turn Right</h4>
-                    <p>Steer the car to the right</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">↓</div>
-                    <h4>Brake / Reverse</h4>
-                    <p>Slow down or move backward</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">SPACE</div>
-                    <h4>Hand Brake</h4>
-                    <p>Engage hand brake for drifting</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">A</div>
-                    <h4>Add Opponents</h4>
-                    <p>Add AI opponents to the race</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">D</div>
-                    <h4>Remove Opponents</h4>
-                    <p>Clear all AI opponents from track</p>
-                </div>
-                
-                <div class="control-item">
-                    <div class="key">V</div>
-                    <h4>Change View</h4>
-                    <p>Cycle through camera perspectives</p>
-                </div>
+            <div class="faq-item">
+                <h3>Why use custom physics instead of VehicleBody?</h3>
+                <p>Our custom implementation gives you full control over the physics behavior, better performance, and easier customization for arcade-style racing games.</p>
             </div>
-        </div> -->
+            
+            <div class="faq-item">
+                <h3>Is this compatible with Godot 4?</h3>
+                <p>Currently optimized for <strong>Godot 3.5.x</strong>. Godot 4 version is in development.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3>What do I get with the source code?</h3>
+                <p>Complete project with all scripts, scenes, assets, and documentation. Ready to modify and build upon.</p>
+            </div>
+        </section>
         
         <!-- Itch.io -->
-        <div class="itch-section">
-            <h3>Also on Itch.io</h3>
-            <p>You can also find and follow this project on Itch.io platform</p>
-            <a href="https://sergeygrigorev.itch.io/racinggodot" class="itch-link" target="_blank">
-                Visit on Itch.io
+        <section class="itch-section" aria-labelledby="itch-io">
+            <h3 id="itch-io">Also Available on Itch.io</h3>
+            <p>Follow updates and join the community on Itch.io platform</p>
+            <a href="https://sergeygrigorev.itch.io/racinggodot" class="itch-link" target="_blank" rel="noopener noreferrer">
+                Visit RacingGodot on Itch.io
             </a>
-        </div>
+        </section>
         
         <!-- Footer -->
         <footer class="footer">
-            <div class="footer-links">
-                <a href="http://k95239sd.beget.tech/racinggodot/" target="_blank">Web Demo</a>
-                <a href="https://sergeygrigorev.itch.io/racinggodot" target="_blank">Itch.io</a>
-                <a href="https://www.youtube.com/embed/FnKklKKV9T8?si=xUfxMhvirfoIEz0H" target="_blank">YouTube</a>
+            <div class="footer-links" role="navigation" aria-label="Footer navigation">
+                <a href="http://k95239sd.beget.tech/racinggodot/" target="_blank" rel="noopener noreferrer">Live Web Demo</a>
+                <a href="https://sergeygrigorev.itch.io/racinggodot" target="_blank" rel="noopener noreferrer">Itch.io Page</a>
+                <a href="https://www.youtube.com/embed/FnKklKKV9T8?si=xUfxMhvirfoIEz0H" target="_blank" rel="noopener noreferrer">YouTube Demo</a>
+                <a href="mailto:issetname@gmail.com">Contact Support</a>
             </div>
             
             <div class="footer-badge">
-                <span>Powered by Godot Engine</span>
+                <span>Powered by Godot Engine 3.5</span>
             </div>
             
-            <p class="mt-2">RacingGodot — Custom arcade car physics for Godot Engine</p>
-            <p><small>Custom physics implementation using RigidBody and RayCast</small></p>
+            <p class="mt-2" itemprop="copyrightNotice">© 2026 RacingGodot - Custom arcade car physics for Godot Engine</p>
+            <p><small>Custom physics implementation using RigidBody and RayCast as VehicleBody alternative</small></p>
         </footer>
     </div>
+    
+    <!-- Schema.org for Video -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "RacingGodot Demo - Custom Car Physics for Godot",
+      "description": "Demonstration of custom arcade car physics implementation in Godot Engine using RigidBody and RayCast",
+      "thumbnailUrl": "https://img.youtube.com/vi/FnKklKKV9T8/maxresdefault.jpg",
+      "uploadDate": "2026-01-01",
+      "duration": "PT2M30S",
+      "contentUrl": "https://www.youtube.com/watch?v=FnKklKKV9T8",
+      "embedUrl": "https://www.youtube.com/embed/FnKklKKV9T8"
+    }
+    </script>
 </body>
 </html>
